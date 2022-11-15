@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router,NavigationExtras,Route } from '@angular/router'
+import { ServiciosService } from 'src/servicios/servicios.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ export class LoginPage implements OnInit {
   modeloUsuario:string='';
   modeloContrasena:string='';
 
-  constructor() { 
+  constructor(private servicio:ServiciosService) { 
     console.log('login iniciado')
   }
 
