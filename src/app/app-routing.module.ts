@@ -8,8 +8,41 @@ const routes: Routes = [
   },
   {
     path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+  path: 'home',
     redirectTo: 'home',
     pathMatch: 'full'
+  },
+  
+  {
+    path: 'geolocalizacion',
+      redirectTo: 'geolocalizacion',
+      pathMatch: 'full'
+    },
+  {
+    path: '**',
+    redirectTo: 'e404',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'e404',
+    loadChildren: () => import('./e404/e404.module').then( m => m.E404PageModule)
+  },
+  {
+    path: 'geolocalizacion',
+    loadChildren: () => import('./geolocalizacion/geolocalizacion.module').then( m => m.GeolocalizacionPageModule)
   },
 ];
 
