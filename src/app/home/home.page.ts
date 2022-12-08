@@ -11,16 +11,17 @@ import { ServicesService } from 'src/servicios/services.service';
 })
 export class HomePage {
 
-  usuarios
-  constructor(public navCtlr:NavController,public service:ServicesService) {}
-  
-  ionViewDidLoad(){
-    this.service.Obtenerdatos()
-    .subscribe(
-    (data)=>{this.usuarios=data;},
-    (error)=>{console.log(error);}
-    )
+  Obtenerdatos:any []=[];
 
-  }
 
+
+  constructor(public services:ServicesService) { 
+    this.services.Obtenerdatos<any[]>("").subscribe(data => {
+
+      this.Obtenerdatos = data
+
+    })
+
+
+}
 }

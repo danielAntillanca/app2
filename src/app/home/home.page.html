@@ -7,10 +7,12 @@
 </ion-header>
 
 <ion-content>
-  <h2>Lista de datos</h2>
+  <h2>Lista de Usuarios</h2>
   <ion-list>
-     <button ion-item *ngFor="let usuario of usuarios">
-     {{usario.name}} - {{usuario.email}}
-    </button>
+     <ion-item *ngFor="let usuario of Obtenerdatos">
+     {{usuario.Name}} - {{usuario.email}}
+     </ion-item>
   </ion-list>
+  <ion-button routerLink="/geolocalizacion" class="ion-margin-top" expand="block">location
+  </ion-button>
 </ion-content>

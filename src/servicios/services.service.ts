@@ -7,10 +7,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ServicesService {
 
-  constructor(public http:HttpClient) { 
-    console.log('hola clientes service');
+  constructor(public http: HttpClient) { }
+
+
+  Obtenerdatos <T>(url:string){
+    url='https://638e90624ddca317d7e15e51.mockapi.io/api/usuarios'
+    return this.http.get<T[]>(url);
+
   }
-  Obtenerdatos(){
-    return this.http.get('https://jsonplaceholder.typicode.com/users');
-  }
+   
 }

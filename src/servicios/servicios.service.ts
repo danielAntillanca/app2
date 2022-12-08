@@ -18,10 +18,54 @@ export class ServiciosService {
       []).then(()=> {
         console.log('tabla creada');
       }).catch(e=>{
-        console.log('tabla ok')
+        console.log('tabla ok');
       })
     }).catch(e=>{
-      console.log('base datos ok')
+      console.log('base datos ok');
     })
+  }
+almacenarusuario(correo,contrasena){
+  this.sqlite.create({
+
+    name:'datos.db',
+    location:'default'
+
+  }).then((db:SQLiteObject)=>  {
+    db.executeSql('insert into usuarios values(?,?)', 
+    [correo,contrasena]).then(()=> {
+      console.log('usuario almacenado ok');
+    }).catch(e=>{
+      console.log('usuario no almacenado');
+    })
+  }).catch(e=>{
+    console.log('base datos ok');
+  })
+}
+
+validarcorreo(correo){
+  return this.sqlite.create({
+
+    name:'datos.db',
+    location:'default'
+
+  }).then((db:SQLiteObject)=>  {
+    return db.executeSql('select count(mail)as cantidad from usuario where mail=?', 
+    [correo]).then((data)=> {
+      if(data.rows.item(0).cantidad === 0){
+        return false;
+      }
+      return true;
+
+
+    }).catch(e=>{
+      return true;
+    })
+  }).catch(e=>{
+    return true;
+  });
+}
+  canActivate(){
+    this.router.navigate(['login']);
+    return false;
   }
 }

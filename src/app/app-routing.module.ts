@@ -27,6 +27,11 @@ const routes: Routes = [
       redirectTo: 'geolocalizacion',
       pathMatch: 'full'
     },
+    {
+      path: 'menu',
+        redirectTo: 'menu',
+        pathMatch: 'full'
+  },
   {
     path: '**',
     redirectTo: 'e404',
@@ -44,6 +49,11 @@ const routes: Routes = [
     path: 'geolocalizacion',
     loadChildren: () => import('./geolocalizacion/geolocalizacion.module').then( m => m.GeolocalizacionPageModule)
   },
+  {
+    path: 'menu',
+    loadChildren: () => import('./menu/menu.module').then( m => m.MenuPageModule)
+  },
+
 ];
 
 @NgModule({
